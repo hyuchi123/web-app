@@ -1,23 +1,16 @@
-import logo from './logo.svg';
 import './App.css';
+//import ProductPage from './Components/ProductPage';
+//import PPagetest from './components/PPagetest';
+//import Product from './Components/Product';
+import { ProductDisplay } from './Components/ProductDisplay/ProductDisplay';
+import TempData from './Components/ProductDisplay/TempData';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+        {TempData.map(product => (
+        <ProductDisplay key={product.id} product={product} />
+      ))}
     </div>
   );
 }
