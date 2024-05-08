@@ -42,9 +42,9 @@ export const ProductDisplay = ({ product }) => {
 
       <div className="product_info">
         <h1>{product.name}</h1>
-        <p>{product.price}</p>
+        <div className="price">${product.price}</div>
         <p>{product.description}</p>
-      </div>
+      
 
       
       <label htmlFor="quantity">數量:</label>
@@ -56,7 +56,11 @@ export const ProductDisplay = ({ product }) => {
           <option value="5">5</option>
           {/* 下拉式選單可加更多選項 */}
         </select>
+      
+     
         <button onClick={handleAddToCart}>加入購物車</button>
+      </div>
+        
     </div>
   )
 }
