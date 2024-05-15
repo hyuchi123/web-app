@@ -17,4 +17,3 @@ export const Shop = () => {
   )
 }
 
-//kuo test:移掉hero，原本Hero在Popular上
