@@ -12,7 +12,6 @@ export const Shop = () => {
         <Hero/>
         <Popular/>
         <NewCollections/>
-        <NewsLetter/>
     </div>
   )
 }

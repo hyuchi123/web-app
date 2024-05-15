@@ -10,7 +10,7 @@ let data_product = [
     image:p1_img,
     new_price:50.00,
     old_price:80.50,
-    category:"men"
+    categories: ["age/0-6", "language/Chinese", "theme/生活"],
   },
   {
     id:2,

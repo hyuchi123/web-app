@@ -38,8 +38,8 @@ export const ProductDisplay = (props) => {
 
       <div className="product_info">
         <h1>{product.name}</h1>
-        <div className="price">${product.price}</div>
-        <p>{product.description}</p>
+        <div className="price">${product.new_price}</div>
+        
       
       <label htmlFor="quantity">數量:</label>
         <select id="quantity" value={quantity} onChange={handleQuantityChange}>
