@@ -1,12 +1,12 @@
 .hero{
-    height: 100vh;
-    background: white;
+    height: 130vh;
+    background: linear-gradient(180deg, #fde1ff, #e1ffea22 60%);
     display: flex;
 }
 
-.hero p{
-    color: #171717;
-    font-size: 100px;
-    font-weight: 700;
+.hero .home-pic img {
+    max-width: 300%;  
+    max-height: 900px;  
+    display: block; 
+    margin: 0 auto; 
 }
-
