@@ -41,8 +41,6 @@ export const ProductDisplay = (props) => {
         <div className="price">${product.price}</div>
         <p>{product.description}</p>
       
-
-      
       <label htmlFor="quantity">數量:</label>
         <select id="quantity" value={quantity} onChange={handleQuantityChange}>
           <option value="1">1</option>
@@ -52,8 +50,6 @@ export const ProductDisplay = (props) => {
           <option value="5">5</option>
           {/* 下拉式選單可加更多選項 */}
           </select>
-      
-     
           <button onClick={handleAddToCart}>加入購物車</button>
           {message && <p>{message}</p>}
         </div>

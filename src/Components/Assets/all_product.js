@@ -1,10 +1,10 @@
-import bookImage from '../Assets/book_image.jpg'
+import bookImage from './book_image.jpg'
 
-const all_product = [
+let all_product = [
   {
     id: 1,
-    image: bookImage,
     name: '我真的好喜歡媽媽',
+    image: bookImage,
     category: "6~12歲",
     price: 134,
     description: '媽媽,我愛你,最尊敬的最理...'
