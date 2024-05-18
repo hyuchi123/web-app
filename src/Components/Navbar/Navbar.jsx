@@ -8,20 +8,18 @@ export const Navbar = () => {
     const [menu, setMenu] = useState("shop");
     const [showAgeDropdown, setShowAgeDropdown] = useState(false);
     const [showLanguageDropdown, setShowLanguageDropdown] = useState(false);
-    const [showThemeDropdown, setShowThemeDropdown] = useState(false);
+    const [showThemeDropdown, setShowThemeDropdown] = useState(false); 
 
 
     return (
         <div className='navbar'>
             <div className='nav-logo'>
-                <img src={logo} alt="" />
+                <Link to='/' style={{ display: 'flex', alignItems: 'center', textDecoration: 'none'}}>
+                <img src={logo} alt="Logo" />
                 <p>Happy book</p>
+                </Link>
             </div>
             <ul className='nav-menu'>
-                <li onClick={() => setMenu("shop")}>
-                    <Link style={{ textDecoration: 'none' }} to='/'>Shop</Link>
-                    {menu === "shop" ? <hr /> : null}
-                </li>
                 <li>
                     <span className="menu" onMouseEnter={() => setShowAgeDropdown(true)} onMouseLeave={() => setShowAgeDropdown(false)}>
                         年齡

@@ -1,6 +1,7 @@
 import React, { createContext, useState } from "react";
 import data from "../Components/Assets/data";
 import { CartItems } from '../Components/CartItems/CartItems';
+import all_product from "../Components/Assets/all_product";
 
 export const ShopContext = createContext({
     data: [],
@@ -14,16 +15,16 @@ const ShopContextProvider = ({ children }) => {
     const getTotalCartAmount = () => {
         let total = 0;
         Object.keys(cartItems).forEach(key => {
-            const product = data.find(p => p.id === key);
+            const product = all_product.find(p => p.id === key);
             if (product) {
-                total += product.new_price * cartItems[key];
+                total += product.price * cartItems[key];
             }
         });
         return total;
     };
 
     const contextValue = {
-        data,
+        data: all_product,
         cartItems,
         getTotalCartAmount
     };
