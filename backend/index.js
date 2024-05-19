@@ -126,7 +126,23 @@ const Product = mongoose.model("Product", {
     type: String,
     required: true,
   },
-  category: {
+  author: {
+    type: String,
+    required: true,
+  },
+  description: {
+    type: String,
+    required: true,
+  },
+  age: {
+    type: String,
+    required: true,
+  },
+  topic: {
+    type: String,
+    required: true,
+  },
+  language: {
     type: String,
     required: true,
   },
@@ -141,10 +157,6 @@ const Product = mongoose.model("Product", {
   date: {
     type: Date,
     default: Date.now,
-  },
-  available: {
-    type: Boolean,
-    default: true,
   },
 });
 
@@ -163,7 +175,11 @@ app.post("/addproduct", async (req, res) => {
     id: id,
     name: req.body.name,
     image: req.body.image,
-    category: req.body.category,
+    author: req.body.author,
+    description: req.body.description,
+    age: req.body.age,
+    topic: req.body.topic,
+    language: req.body.language,
     new_price: req.body.new_price,
     old_price: req.body.old_price,
   });
@@ -174,6 +190,45 @@ app.post("/addproduct", async (req, res) => {
     success: 1,
     name: req.body.name,
   });
+});
+
+// Save multiple products to database
+app.post("/addproducts", async (req, res) => {
+  try {
+    let products = await Product.find({});
+    let lastProductId =
+      products.length > 0 ? products[products.length - 1].id : 0;
+
+    // req.body.products should be an array of products
+    const newProducts = req.body.products.map((product, index) => ({
+      id: lastProductId + 1 + index,
+      name: product.name,
+      image: product.image,
+      author: product.author,
+      description: product.description,
+      age: product.age,
+      topic: product.topic,
+      language: product.language,
+      new_price: product.new_price,
+      old_price: product.old_price,
+    }));
+
+    const savedProducts = await Product.insertMany(newProducts);
+
+    console.log("Products saved", savedProducts);
+    res.json({
+      success: 1,
+      message: `${savedProducts.length} products added successfully`,
+      products: savedProducts,
+    });
+  } catch (error) {
+    console.error("Error saving products:", error);
+    res.status(500).json({
+      success: 0,
+      message: "Error saving products",
+      error: error.message,
+    });
+  }
 });
 
 // Creating API for deleting product
