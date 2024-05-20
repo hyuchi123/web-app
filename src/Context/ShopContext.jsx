@@ -23,6 +23,7 @@ const ShopContextProvider = ({ children }) => {
         fetch("http://localhost:4000/allproducts")
         .then((response)=>response.json())
         .then((data)=>setAll_Product(data))
+        .catch(error => console.error('Error fetching products:', error));
     }, []);
 
     const getTotalCartAmount = () => {
