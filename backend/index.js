@@ -87,7 +87,7 @@ app.post("/signup", async (req, res) => {
       id: user.id,
     },
   };
-  const token = jwt.sign(data, "secret");
+  const token = jwt.sign(data, "serect_ecom");
   res.json({ success: true, token });
 });
 
@@ -102,7 +102,7 @@ app.post("/login", async (req, res) => {
           id: user.id,
         },
       };
-      const token = jwt.sign(data, "secret");
+      const token = jwt.sign(data, "serect_ecom");
       res.json({ success: true, token });
     } else {
       res.json({ success: false, errors: "Wrong Password" });
@@ -307,6 +307,13 @@ app.post("/removefromcart", fetchUser, async (req, res) => {
     { cartData: userData.cartData }
   );
   res.send("Product removed to cart");
+});
+
+// Creating endpoint for getting user cart data
+app.post("/getcart", fetchUser, async (req, res) => {
+  console.log("Getcart");
+  let userData = await Users.findOne({ _id: req.user.id });
+  res.json(userData.cartData);
 });
 
 app.listen(port, (error) => {
