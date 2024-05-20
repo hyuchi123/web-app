@@ -25,8 +25,9 @@ export const Navbar = () => {
                         年齡
                         {showAgeDropdown && (
                             <div className="dropdown">
-                                <Link style={{ textDecoration: 'none' }} to='/age/0-6'>0~6歲</Link>
-                                <Link style={{ textDecoration: 'none' }} to='/age/6-12'>6~12歲</Link>
+                                <Link style={{ textDecoration: 'none' }} to='/age/7-9'>7-9歲</Link>
+                                <Link style={{ textDecoration: 'none' }} to='/age/10-12'>10-12歲</Link>
+                                <Link style={{ textDecoration: 'none' }} to='/age/13-15'>13-15歲</Link>
                             </div>
                         )}
                     </span>
@@ -47,15 +48,15 @@ export const Navbar = () => {
                         主題
                         {showThemeDropdown && (
                             <div className="dropdown">
-                                <Link style={{ textDecoration: 'none' }} to='/theme/環境教育' onClick={() => setMenu("環境教育")}>環境教育</Link>
-                                <Link style={{ textDecoration: 'none' }} to='/theme/綜合活動' onClick={() => setMenu("綜合活動")}>綜合活動</Link>
-                                <Link style={{ textDecoration: 'none' }} to='/theme/社會' onClick={() => setMenu("社會")}>社會</Link>
-                                <Link style={{ textDecoration: 'none' }} to='/theme/生涯發展教育' onClick={() => setMenu("生涯發展教育")}>生涯發展教育</Link>
-                                <Link style={{ textDecoration: 'none' }} to='/theme/自然與生活科技' onClick={() => setMenu("自然與生活科技")}>自然與生活科技</Link>
-                                <Link style={{ textDecoration: 'none' }} to='/theme/藝術與人文' onClick={() => setMenu("藝術與人文")}>藝術與人文</Link>
-                                <Link style={{ textDecoration: 'none' }} to='/theme/健康與教育' onClick={() => setMenu("健康與教育")}>健康與教育</Link>
-                                <Link style={{ textDecoration: 'none' }} to='/theme/家政教育' onClick={() => setMenu("家政教育")}>家政教育</Link>
-                                <Link style={{ textDecoration: 'none' }} to='/theme/生活' onClick={() => setMenu("生活")}>生活</Link>
+                                <Link style={{ textDecoration: 'none' }} to='/theme/環境教育'>環境教育</Link>
+                                <Link style={{ textDecoration: 'none' }} to='/theme/綜合活動'>綜合活動</Link>
+                                <Link style={{ textDecoration: 'none' }} to='/theme/社會'>社會</Link>
+                                <Link style={{ textDecoration: 'none' }} to='/theme/生涯發展教育'>生涯發展教育</Link>
+                                <Link style={{ textDecoration: 'none' }} to='/theme/自然與生活科技'>自然與生活科技</Link>
+                                <Link style={{ textDecoration: 'none' }} to='/theme/藝術與人文'>藝術與人文</Link>
+                                <Link style={{ textDecoration: 'none' }} to='/theme/健康與體育'>健康與體育</Link>
+                                <Link style={{ textDecoration: 'none' }} to='/theme/家政教育'>家政教育</Link>
+                                <Link style={{ textDecoration: 'none' }} to='/theme/生活'>生活</Link>
                             </div>
                         )}
                     </span>

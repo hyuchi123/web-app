@@ -20,14 +20,10 @@ export const ShopCategory = (props) => {
       </div>
       <div className="shopcategory-products">
         {data.map((item) => {
-          const { categories } = item;
-    // 遍历商品的分类信息
-          for (let category of categories) {
-      // 如果任何一个分类与当前 props.category 匹配，则显示该商品
-            if (category === props.category) {
-            return <Item key={item.id} id={item.id} name={item.name} image={item.image} price={item.new_price} />;
-          }
+            if (props.category === item.topic || props.category === item.age || props.category === item.language) {
+            return <Item key={item.id} id={item.id} name={item.name} image={item.image} new_price={item.new_price} old_price={item.old_price}/>;
         }
+
     // 如果没有匹配的分类，则不显示该商品
         return null;
         })}
