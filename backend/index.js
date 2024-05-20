@@ -116,6 +116,7 @@ app.post("/login", async (req, res) => {
 const Product = mongoose.model("Product", {
   id: {
     type: Number,
+    unique: true,
     required: true,
   },
   name: {
@@ -246,6 +247,23 @@ app.get("/allproducts", async (req, res) => {
   let products = await Product.find({});
   console.log("All products fetched");
   res.send(products);
+});
+
+// API for getting a single product by ID
+app.get("/product/:id", async (req, res) => {
+  try {
+    const productId = req.params.id;
+    let product = await Product.findOne({ id: productId });
+    if (product) {
+      console.log(`Product with ID ${productId} fetched`);
+      res.send(product);
+    } else {
+      res.status(404).send("Product not found");
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Server Error");
+  }
 });
 
 // Creating endpoint for newcollection  data
