@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { useState } from 'react'
 import './ProductDisplay.css'
+import { ShopContext } from '../../Context/ShopContext'
 
 
 export const ProductDisplay = (props) => {
     const {product} = props
+    const {addToCart} = useContext(ShopContext)
     const [quantity, setQuantity] = useState(1)
     const [cart, setCart] = useState([])
     const [isLoggedIn, setIsLoggedIn] = useState(false) // 新增登入狀態
@@ -50,7 +52,7 @@ export const ProductDisplay = (props) => {
           <option value="5">5</option>
           {/* 下拉式選單可加更多選項 */}
           </select>
-          <button onClick={handleAddToCart}>加入購物車</button>
+          <button onClick={()=>{addToCart(product.id)}}>加入購物車</button>
           {message && <p>{message}</p>}
         </div>
           
