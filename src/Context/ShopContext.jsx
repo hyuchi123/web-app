@@ -17,7 +17,7 @@ const getDefaultCart = () => {
 const ShopContextProvider = ({ children }) => {
     
     const [all_product, setAll_Product] = useState([]);
-    const [cartItems, setCartItems] = useState({getDefaultCart});
+    const [cartItems, setCartItems] = useState(getDefaultCart);
 
     useEffect(() => {
         fetch("http://localhost:4000/allproducts")
@@ -39,12 +39,14 @@ const ShopContextProvider = ({ children }) => {
 
     const getTotalCartAmount = () => {
         let total = 0;
-        Object.keys(cartItems).forEach(key => {
-            const product = all_product.find(p => p.id === key);
-            if (product) {
-                total += product.new_price * cartItems[key];
+        for (const item in cartItems) {
+            if (cartItems[item] > 0) {
+                let itemInfo = all_product.find(product => product.id === Number(item) );
+                if (itemInfo) {
+                    total += itemInfo.new_price * cartItems[item];
+                }
             }
-        });
+        }
         return total;
     };
 
