@@ -305,10 +305,14 @@ const fetchUser = async (req, res, next) => {
 // Creating endpoint for adding product to cart
 app.post("/addtocart", fetchUser, async (req, res) => {
   console.log("Add", req.body.itemId, "to cart");
-  console.log("quantity", req.quantity);
+  console.log("quantity", req.body.quantity);
   let userData = await Users.findOne({ _id: req.user.id });
+  // 檢查商品是否已存在於購物車中，如果不存在則初始化為0
+  if (!userData.cartData[req.body.itemId]) {
+    userData.cartData[req.body.itemId] = 0;
+  }
   // Add the quantity to the cart for the specific item
-  userData.cartData[req.body.itemId] += req.quantity;
+  userData.cartData[req.body.itemId] += req.body.quantity;
 
   // userData.cartData[req.body.itemId] += 1;
   await Users.findOneAndUpdate(
