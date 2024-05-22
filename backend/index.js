@@ -303,10 +303,14 @@ const fetchUser = async (req, res, next) => {
 };
 
 // Creating endpoint for adding product to cart
-app.post("/addtocart", async (req, res) => {
-  console.log("Add", req.body.itemId);
+app.post("/addtocart", fetchUser, async (req, res) => {
+  console.log("Add", req.body.itemId, "to cart");
+  console.log("quantity", req.quantity);
   let userData = await Users.findOne({ _id: req.user.id });
-  userData.cartData[req.body.itemId] += 1;
+  // Add the quantity to the cart for the specific item
+  userData.cartData[req.body.itemId] += req.quantity;
+
+  // userData.cartData[req.body.itemId] += 1;
   await Users.findOneAndUpdate(
     { _id: req.user.id },
     { cartData: userData.cartData }
@@ -316,7 +320,7 @@ app.post("/addtocart", async (req, res) => {
 
 // Creating endpoint for removing product from cart
 app.post("/removefromcart", fetchUser, async (req, res) => {
-  console.log("Remove", req.body.itemId);
+  console.log("Remove", req.body.itemId, "from cart");
   let userData = await Users.findOne({ _id: req.user.id });
   if (userData.cartData[req.body.itemId] > 0)
     userData.cartData[req.body.itemId] -= 1;
