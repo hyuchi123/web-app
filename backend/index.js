@@ -246,7 +246,7 @@ app.post("/removeproduct", async (req, res) => {
   });
 });
 
-// Adjusted API for deleting a product using RESTful conventions
+// Creating API for deleting a product using RESTful conventions
 app.delete("/product/:id", async (req, res) => {
   try {
     const deletedProduct = await Product.findOneAndDelete({
