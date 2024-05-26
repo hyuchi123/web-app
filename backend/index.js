@@ -299,7 +299,7 @@ app.get("/product/:id", async (req, res) => {
 });
 
 // Creating endpoint for newcollection  data
-app.get("/newcollections", async (req, res) => {
+app.get("/products/new", async (req, res) => {
   let products = await Product.find({});
   let newcollection = products.slice(1).slice(-8);
   console.log("New collection fetched");
