@@ -36,6 +36,7 @@
     justify-content: center;
     gap: 3px;
     cursor: pointer;
+    position: relative; /* Add this */
 }
 .nav-menu hr{
     border: none;
@@ -80,25 +81,30 @@
 }
 
 .nav-menu li:hover {
-    color: #ff4141; /* 在游標懸停時改變文字顏色 */
+    color: #ff4141; /* Change text color on hover */
+    position: relative;
 }
 
 .nav-menu li:hover hr {
-    background: #ff4141; /* 在游標懸停時改變下劃線的顏色 */
+    background: #ff4141; /* Change underline color on hover */
 }
 
-
 .dropdown {
-    top: 100%;
-    left: 0;
+    display: none; /* Hidden by default */
+    position: absolute; /* Position it absolutely */
+    top: 100%; /* Align it to the bottom of the parent */
+    left: 0; /* Align it to the left of the parent */
     background-color: white;
     border: 1px solid #ccc;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     padding: 10px;
-    display: flex; /* 使用 flexbox 佈局 */
-    flex-direction: column; /* 將子元素垂直排列 */
-    gap: 10px; /* 可選：添加間隔 */
+    flex-direction: column;
+    gap: 10px;
+    z-index: 1; /* Ensure it's on top of other elements */
+    white-space: nowrap; /* Prevent text from wrapping */
+    width: auto; /* Set width to auto */
+    min-width: max-content; /* Ensure the width is based on the content */
 }
 
 .dropdown a {
@@ -110,3 +116,7 @@
     color: #ff4141;
 }
 
+/* Show the dropdown when hovering over the parent .menu */
+.nav-menu .menu:hover .dropdown {
+    display: flex; /* Use flex display for the dropdown */
+}
