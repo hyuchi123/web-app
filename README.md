@@ -1,34 +1,45 @@
 # Introduction
-<hr>
-A minimalist picture book website to provide users with a simple and convenient experience.
+
+A minimalist picture book website designed to provide users a simple and convenient experience.
+
+<br>
 
 The website architecture includes:
 
-- homepage with advertisements
-- product category lists
-- product description pages
-- registration and login functionality
-- shopping cart, and checkout design
+- Homepage with advertisements
+- Product category lists
+- Product description pages
+- Registration and login functionality
+- Shopping cart
+- Checkout system
 
-The backend database consists of **user data**, **product data**, and **order data** to manage user information, products, shopping carts, and orders.
+<br>
+
+The backend database consists of user data, product data, and order data to manage user information, products, shopping carts, and orders.
+
+<br>
+
+The website is built with:
 
 - **Frontend**: `React`
 - **Backend**: `Node.js`
     - **Auth**: `JWT`
     - **Database**: `MongoDB`
 
-**記得放網站截圖！**
+**記得放網站截圖！!**
 
 <br>
 
 # Installation
-<hr>
+
 1. Install in the web-app directory
+
 ```sh
 $ npm install
 ```
 
 2. Install in the backend directory
+
 ```sh
 $ npm install
 ```
@@ -47,7 +58,6 @@ CONNECTION_STRING="<your_MongoDB_connection_string>"
 <br>
 
 # Run
-<hr>
 1. Run backend in the backend directory
 ```sh
 $ node index.js
@@ -61,13 +71,11 @@ $ npm start
 <br>
 
 # Database Schema
-<hr>
 **記得放截圖！**
 
 <br>
 
 # Todo
-<hr>
 - Integrate an actual payment system
 - Check the inventory of picture books
 - Write privacy policy and terms of service
@@ -75,7 +83,7 @@ $ npm start
 - Display historical order records on the member page
 - Create a comprehensive data management console, including visual interface features for listing and delisting products, managing advertisement information, etc.
 
-<br>
+<br><hr><br>
 
 
 
