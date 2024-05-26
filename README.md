@@ -26,8 +26,6 @@ The website is built with:
     - **Auth**: `JWT`
     - **Database**: `MongoDB`
 
-**記得放網站截圖！!**
-
 <br>
 
 # Installation
@@ -45,7 +43,7 @@ $ npm install
 ```
 
 3. Add book data in your MongoDB
-**(需要加上範例的資料檔案嗎？)**
+
 ```
 columns required: name, image, author, description, age, topic, language, new_price, old_price
 ```
@@ -71,7 +69,7 @@ $ npm start
 <br>
 
 # Database Schema
-**記得放截圖！**
+
 
 <br>
 
