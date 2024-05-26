@@ -307,7 +307,7 @@ app.get("/newcollections", async (req, res) => {
 });
 
 // Creating endpoint for popular products
-app.get("/popularproducts", async (req, res) => {
+app.get("/products/popular", async (req, res) => {
   let products = await Product.find({});
   let popular_products = products.slice(0, 4);
   console.log("Popular products fetched");
