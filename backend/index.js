@@ -162,7 +162,7 @@ const Product = mongoose.model("Product", {
 });
 
 // Save product to database
-app.post("/addproduct", async (req, res) => {
+app.post("/product", async (req, res) => {
   try {
     // Find the product with the highest ID
     const highestIdProduct = await Product.findOne().sort({ id: -1 }).exec();
@@ -236,17 +236,7 @@ app.post("/products", async (req, res) => {
   }
 });
 
-// Creating API for deleting product
-app.post("/removeproduct", async (req, res) => {
-  await Product.findOneAndDelete({ id: req.body.id });
-  console.log("Product deleted");
-  res.json({
-    success: true,
-    name: req.body.name,
-  });
-});
-
-// Creating API for deleting a product using RESTful conventions
+// Creating API for deleting a product
 app.delete("/product/:id", async (req, res) => {
   try {
     const deletedProduct = await Product.findOneAndDelete({
