@@ -162,47 +162,51 @@ const Product = mongoose.model("Product", {
 });
 
 // Save product to database
-app.post("/addproduct", async (req, res) => {
-  let products = await Product.find({});
-  let id;
-  if (products.length > 0) {
-    let last_product_array = products.slice(-1);
-    let last_product = last_product_array[0];
-    id = last_product.id + 1;
-  } else {
-    id = 1;
+app.post("/product", async (req, res) => {
+  try {
+    // Find the product with the highest ID
+    const highestIdProduct = await Product.findOne().sort({ id: -1 }).exec();
+    const newId = highestIdProduct ? highestIdProduct.id + 1 : 1;
+
+    const product = new Product({
+      id: newId,
+      name: req.body.name,
+      image: req.body.image,
+      author: req.body.author,
+      description: req.body.description,
+      age: req.body.age,
+      topic: req.body.topic,
+      language: req.body.language,
+      new_price: req.body.new_price,
+      old_price: req.body.old_price,
+    });
+
+    await product.save();
+    console.log("Product saved");
+    res.json({
+      success: true,
+      name: req.body.name,
+    });
+  } catch (error) {
+    console.error("Error saving product:", error);
+    res.status(500).json({
+      success: false,
+      message: "An error occurred while saving the product",
+      error: error.message,
+    });
   }
-  const product = new Product({
-    id: id,
-    name: req.body.name,
-    image: req.body.image,
-    author: req.body.author,
-    description: req.body.description,
-    age: req.body.age,
-    topic: req.body.topic,
-    language: req.body.language,
-    new_price: req.body.new_price,
-    old_price: req.body.old_price,
-  });
-  console.log(product);
-  await product.save();
-  console.log("Product saved");
-  res.json({
-    success: 1,
-    name: req.body.name,
-  });
 });
 
 // Save multiple products to database
-app.post("/addproducts", async (req, res) => {
+app.post("/products", async (req, res) => {
   try {
-    let products = await Product.find({});
-    let lastProductId =
-      products.length > 0 ? products[products.length - 1].id : 0;
+    // Find the product with the highest ID
+    const highestIdProduct = await Product.findOne().sort({ id: -1 }).exec();
+    const highestId = highestIdProduct ? highestIdProduct.id : 0;
 
     // req.body.products should be an array of products
     const newProducts = req.body.products.map((product, index) => ({
-      id: lastProductId + 1 + index,
+      id: highestId + 1 + index,
       name: product.name,
       image: product.image,
       author: product.author,
@@ -232,18 +236,36 @@ app.post("/addproducts", async (req, res) => {
   }
 });
 
-// Creating API for deleting product
-app.post("/removeproduct", async (req, res) => {
-  await Product.findOneAndDelete({ id: req.body.id });
-  console.log("Product deleted");
-  res.json({
-    success: true,
-    name: req.body.name,
-  });
+// Creating API for deleting a product
+app.delete("/product/:id", async (req, res) => {
+  try {
+    const deletedProduct = await Product.findOneAndDelete({
+      id: req.params.id,
+    });
+    if (deletedProduct) {
+      console.log("Product deleted");
+      res.json({
+        success: true,
+        message: "Product deleted successfully",
+        name: deletedProduct.name,
+      });
+    } else {
+      res.status(404).json({
+        success: false,
+        message: "Product not found",
+      });
+    }
+  } catch (error) {
+    console.error("Error deleting product:", error);
+    res.status(500).json({
+      success: false,
+      message: "An error occurred while deleting the product",
+    });
+  }
 });
 
 // Creating API for getting all products
-app.get("/allproducts", async (req, res) => {
+app.get("/products", async (req, res) => {
   let products = await Product.find({});
   console.log("All products fetched");
   res.send(products);
@@ -267,7 +289,7 @@ app.get("/product/:id", async (req, res) => {
 });
 
 // Creating endpoint for newcollection  data
-app.get("/newcollections", async (req, res) => {
+app.get("/products/new", async (req, res) => {
   let products = await Product.find({});
   let newcollection = products.slice(1).slice(-8);
   console.log("New collection fetched");
@@ -275,7 +297,7 @@ app.get("/newcollections", async (req, res) => {
 });
 
 // Creating endpoint for popular products
-app.get("/popularproducts", async (req, res) => {
+app.get("/products/popular", async (req, res) => {
   let products = await Product.find({});
   let popular_products = products.slice(0, 4);
   console.log("Popular products fetched");
@@ -303,7 +325,7 @@ const fetchUser = async (req, res, next) => {
 };
 
 // Creating endpoint for adding product to cart
-app.post("/addtocart", fetchUser, async (req, res) => {
+app.post("/cart/items", fetchUser, async (req, res) => {
   console.log("Add", req.body.itemId, "to cart");
   console.log("quantity", req.body.quantity);
   let userData = await Users.findOne({ _id: req.user.id });
@@ -323,7 +345,7 @@ app.post("/addtocart", fetchUser, async (req, res) => {
 });
 
 // Creating endpoint for removing product from cart
-app.post("/removefromcart", fetchUser, async (req, res) => {
+app.delete("/cart/items", fetchUser, async (req, res) => {
   console.log("Remove", req.body.itemId, "from cart");
   let userData = await Users.findOne({ _id: req.user.id });
   if (userData.cartData[req.body.itemId] > 0)
@@ -336,7 +358,7 @@ app.post("/removefromcart", fetchUser, async (req, res) => {
 });
 
 // Creating endpoint for getting user cart data
-app.post("/getcart", fetchUser, async (req, res) => {
+app.get("/cart", fetchUser, async (req, res) => {
   console.log("Getcart");
   let userData = await Users.findOne({ _id: req.user.id });
   res.json(userData.cartData);

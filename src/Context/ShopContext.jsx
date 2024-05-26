@@ -20,19 +20,17 @@ const ShopContextProvider = ({ children }) => {
     const [cartItems, setCartItems] = useState(getDefaultCart);
 
     useEffect(() => {
-        fetch("http://localhost:4000/allproducts")
+        fetch("http://localhost:4000/products")
         .then((response)=>response.json())
         .then((data)=>setAll_Product(data))
         
         if (localStorage.getItem('auth-token')){
-            fetch('http://localhost:4000/getcart',{
-                method:'POST',
+            fetch('http://localhost:4000/cart',{
+                method:'GET',
                 headers:{
-                    Accept:'application/form-data',
-                    'auth-token':`${localStorage.getItem('auth-token')}`,
-                    'Content-Type':'application/json',
+                    Accept: 'application/json',
+                    'auth-token': localStorage.getItem('auth-token'),
                 },
-                body:"",
             }).then((response) => response.json()).then((data) => setCartItems(data));
         }
     }, []);
@@ -63,7 +61,7 @@ const ShopContextProvider = ({ children }) => {
     const addToCart = (itemId, quantity) => {
         setCartItems((prev) => ({...prev, [itemId]: prev[itemId]  + quantity}));
         if (localStorage.getItem('auth-token')){
-            fetch('http://localhost:4000/addtocart',{
+            fetch('http://localhost:4000/cart/items',{
                 method:'POST',
                 headers:{
                     Accept:'application/form-data',
@@ -87,8 +85,8 @@ const ShopContextProvider = ({ children }) => {
     const removeFromCart = (itemId) => {
         setCartItems((prev) => ({...prev, [itemId]: prev[itemId] - 1}))
         if (localStorage.getItem('auth-token')){
-            fetch('http://localhost:4000/removefromcart',{
-                method:'POST',
+            fetch('http://localhost:4000/cart/items',{
+                method:'DELETE',
                 headers:{
                     Accept:'application/form-data',
                     'auth-token':`${localStorage.getItem('auth-token')}`,
