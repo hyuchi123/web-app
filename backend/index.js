@@ -275,7 +275,7 @@ app.delete("/product/:id", async (req, res) => {
 });
 
 // Creating API for getting all products
-app.get("/allproducts", async (req, res) => {
+app.get("/products", async (req, res) => {
   let products = await Product.find({});
   console.log("All products fetched");
   res.send(products);
