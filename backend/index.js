@@ -198,7 +198,7 @@ app.post("/addproduct", async (req, res) => {
 });
 
 // Save multiple products to database
-app.post("/addproducts", async (req, res) => {
+app.post("/products", async (req, res) => {
   try {
     // Find the product with the highest ID
     const highestIdProduct = await Product.findOne().sort({ id: -1 }).exec();
