@@ -1,3 +1,90 @@
+# Introduction
+<hr>
+A minimalist picture book website to provide users with a simple and convenient experience.
+
+The website architecture includes:
+
+- homepage with advertisements
+- product category lists
+- product description pages
+- registration and login functionality
+- shopping cart, and checkout design
+
+The backend database consists of **user data**, **product data**, and **order data** to manage user information, products, shopping carts, and orders.
+
+- **Frontend**: `React`
+- **Backend**: `Node.js`
+    - **Auth**: `JWT`
+    - **Database**: `MongoDB`
+
+**記得放網站截圖！**
+
+<br>
+
+# Installation
+<hr>
+1. Install in the web-app directory
+```sh
+$ npm install
+```
+
+2. Install in the backend directory
+```sh
+$ npm install
+```
+
+3. Add book data in your MongoDB
+**(需要加上範例的資料檔案嗎？)**
+```
+columns required: name, image, author, description, age, topic, language, new_price, old_price
+```
+
+4. Add `.env` file in the backend directory
+```
+CONNECTION_STRING="<your_MongoDB_connection_string>"
+``` 
+
+<br>
+
+# Run
+<hr>
+1. Run backend in the backend directory
+```sh
+$ node index.js
+```
+
+2. Run frontend in the web-app directory
+```sh
+$ npm start
+```
+
+<br>
+
+# Database Schema
+<hr>
+**記得放截圖！**
+
+<br>
+
+# Todo
+<hr>
+- Integrate an actual payment system
+- Check the inventory of picture books
+- Write privacy policy and terms of service
+- Record user login history on the website
+- Display historical order records on the member page
+- Create a comprehensive data management console, including visual interface features for listing and delisting products, managing advertisement information, etc.
+
+<br>
+
+
+
+
+
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
