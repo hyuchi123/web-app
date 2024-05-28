@@ -14,6 +14,56 @@
     font-size: 24px;
     font-weight: 600;
 }
+.listproduct-actions {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 20px;
+    width: 100%;
+    margin-bottom: 1.5rem;
+    justify-content: flex-start;
+    font-size: 15px;
+}
+
+.listproduct-actions select,
+.listproduct-actions button {
+    padding: 0.5rem 1rem;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.listproduct-actions select:focus,
+.listproduct-actions button:focus {
+    outline: none;
+    border-color: #454545;
+}
+
+.listproduct-actions button {
+    background-color: darkgrey;
+    color: #fff;
+    cursor: pointer;
+}
+
+.listproduct-actions button:hover {
+    background-color: grey;
+}
+
+.listproduct-actions button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+.listproduct-actions select {
+    appearance: none;
+    background-repeat: no-repeat;
+    background-position: right 0.5rem center;
+    background-size: 1rem;
+    padding-right: 2rem;
+}
+  
 .listproduct-allproducts {
     width: 100%;
 }
@@ -57,5 +107,8 @@
     }  
     .listproduct-product-icon {
         height: 60px;
+    }
+    .listproduct-actions {
+        font-size: 12px;
     }
 }
