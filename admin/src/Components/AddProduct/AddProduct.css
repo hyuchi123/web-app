@@ -42,10 +42,10 @@
     width: 120px;
     border-radius: 10px;
     object-fit: contain;
-    margin: 10px 0px;
+    margin: 30px 0px;
 }
 .addproduct-btn {
-    margin-top: 20px;
+    /* margin-top: 20px; */
     width: 160px;
     height: 50px;
     border-radius: 6px;
