@@ -60,29 +60,29 @@ const AddProduct = () => {
   return (
     <div className='add-product'>
         <div className='addproduct-itemfield'>
-            <p>Product Title</p>
+            <p>書名</p>
             <input value={productDetails.name} onChange={changeHandler} type="text" name='name' placeholder='Type here'/>
         </div>
         <div className='addproduct-itemfield'>
-            <p>Product Description</p>
+            <p>敘述</p>
             <input value={productDetails.description} onChange={changeHandler} type="text" name='description' placeholder='Type here'/>
         </div>
         <div className='addproduct-itemfield'>
-            <p>Product Author</p>
+            <p>作者</p>
             <input value={productDetails.author} onChange={changeHandler} type="text" name='author' placeholder='Type here'/>
         </div>
         <div className="addproduct-price">
             <div className="addproduct-itemfield">
-                <p>Price</p>
+                <p>原價</p>
                 <input value={productDetails.old_price} onChange={changeHandler} type="text" name='old_price' placeholder='Type here'/>
             </div>
             <div className="addproduct-itemfield">
-                <p>Offer Price</p>
+                <p>售價</p>
                 <input value={productDetails.new_price} onChange={changeHandler} type="text" name='new_price' placeholder='Type here'/>
             </div>
         </div>
         <div className="addproduct-itemfield">
-            <p>Product Topic</p>
+            <p>主題</p>
             <select value={productDetails.topic} onChange={changeHandler} name="topic" className='add-product-selector'>
                 <option value="環境教育">環境教育</option>
                 <option value="綜合活動">綜合活動</option>
@@ -96,7 +96,7 @@ const AddProduct = () => {
             </select>
         </div>
         <div className="addproduct-itemfield">
-            <p>Product Age</p>
+            <p>適讀年齡</p>
             <select value={productDetails.age} onChange={changeHandler} name="age" className='add-product-selector'>
                 <option value="7-9歲">7-9歲</option>
                 <option value="10-12歲">10-12歲</option>
@@ -104,7 +104,7 @@ const AddProduct = () => {
             </select>
         </div>
         <div className="addproduct-itemfield">
-            <p>Product Language</p>
+            <p>語言</p>
             <select value={productDetails.language} onChange={changeHandler} name="language" className='add-product-selector'>
                 <option value="正體中文">正體中文</option>
                 <option value="英文">英文</option>
