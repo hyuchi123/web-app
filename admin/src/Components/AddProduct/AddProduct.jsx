@@ -5,7 +5,7 @@ import { useState } from 'react'
 import { name } from 'ejs'
 
 const AddProduct = () => {
-    const[image, setImage] = useState(false);
+    const[image, setImage] = useState(null);
     const[productDetails, setProductDetails] = useState({
         name: '',
         old_price: '',

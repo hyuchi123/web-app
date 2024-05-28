@@ -21,7 +21,6 @@ const removeProduct = async (productId) => {
     console.error('Error:', error);
     alert('An error occurred while removing the product.');
   }
-  
 };
 
 const ListProduct = () => {
