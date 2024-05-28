@@ -364,6 +364,20 @@ app.get("/cart", fetchUser, async (req, res) => {
   res.json(userData.cartData);
 });
 
+// Creating endpoint for clearing user cart data
+app.delete("/cart", fetchUser, async (req, res) => {
+  console.log("Clear cart");
+  let userData = await Users.findOne({ _id: req.user.id });
+  for (let i = 0; i < 300; i++) {
+    userData.cartData[i] = 0;
+  }
+  await Users.findOneAndUpdate(
+    { _id: req.user.id },
+    { cartData: userData.cartData }
+  );
+  res.send("Cart cleared");
+});
+
 app.listen(port, (error) => {
   if (!error) {
     console.log("Server is running on port:", port);
