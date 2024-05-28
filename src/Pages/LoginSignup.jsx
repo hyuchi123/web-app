@@ -18,7 +18,7 @@ export const LoginSignup = () => {
     };
 
     const login = async () => {
-        if (!formData.username || !formData.password || !formData.email) {
+        if (!formData.password || !formData.email) {
             alert('Please fill in all fields.');
             return; // Prevent further execution if any field is empty
         }
