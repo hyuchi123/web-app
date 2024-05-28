@@ -42,13 +42,19 @@ $ npm install
 $ npm install
 ```
 
-3. Add book data in your MongoDB
+3. Install in the admin directory
+
+```sh
+$ npm install
+```
+
+4. Add book data in your MongoDB
 
 ```
 columns required: name, image, author, description, age, topic, language, new_price, old_price
 ```
 
-4. Add `.env` file in the backend directory
+5. Add `.env` file in the backend directory
 ```
 CONNECTION_STRING="<your_MongoDB_connection_string>"
 ``` 
@@ -64,6 +70,11 @@ $ node index.js
 2. Run frontend in the web-app directory
 ```sh
 $ npm start
+```
+
+3. Run frontend in the admin directory
+```sh
+$ npm run dev
 ```
 
 <br>
