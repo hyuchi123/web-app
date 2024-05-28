@@ -40,7 +40,7 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     row-gap: 50px;
-    column-gap: 15px;
+    /* column-gap: 5px; */
 }
   
 .item {
