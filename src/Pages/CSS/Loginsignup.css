@@ -7,11 +7,11 @@
 }
 .loginsignup-container{
     width: 580px;
-    height: 600px;
+    height: auto;
     background: white;
     margin: auto;
     padding: 40px 60px;
-    margin-bottom: 50px;
+    /* margin-bottom: 50px; */
 }
 .loginsignup-container h1{
     margin: 20px 0px;

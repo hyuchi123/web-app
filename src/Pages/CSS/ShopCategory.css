@@ -34,36 +34,45 @@
 .shopcategory-indexSort p span{
     font-weight: 600;
 }
-.shopcategory-products{
+
+.shopcategory-products {
     margin-top: 30px;
-    margin-left: -20px;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    row-gap: 80px;
-    column-gap: 15px;
+    grid-template-columns: repeat(4, 1fr);
+    row-gap: 50px;
+    /* column-gap: 5px; */
+}
+  
+.item {
+    max-width: 100%; /* Ensure the container does not exceed its parent's width */
+}
+
+.shopcategory-products .item a img {
+    max-width: 75%; /* Make sure the image does not exceed the container's width */
+    height: auto; /* Maintain the aspect ratio of the image */
 }
 
 .pagination {
-margin-top: 60px;
-display: flex;
-justify-content: center;
+    margin-top: 60px;
+    display: flex;
+    justify-content: center;
 }
 
 .pagination button {
-padding: 10px 15px;
-border: none;
-background-color: #f0f0f0;
-margin: 0 10px;
-cursor: pointer;
-transition: background-color 0.3s;
-font-size: 16px;
+    padding: 10px 15px;
+    border: none;
+    background-color: #f0f0f0;
+    margin: 0 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 16px;
 }
 
 .pagination button:hover {
-background-color: #cecece;
+    background-color: #cecece;
 }
 
 .pagination button.active {
-background-color: #1f6aba;
-color: white;
+    background-color: #1f6aba;
+    color: white;
 }
