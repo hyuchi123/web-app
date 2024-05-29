@@ -18,8 +18,8 @@ export const Navbar = () => {
         <div className='navbar'>
             <div className='nav-logo'>
                 <Link to='/' style={{ display: 'flex', alignItems: 'center', textDecoration: 'none'}}>
-                <img src={logo} alt="Logo" width="50" height="50"/>
-                <p>Happy Book</p>
+                <img src={logo} alt="Logo" width="100" height="100" />
+                <p>快樂書朋友</p>
                 </Link>
             </div>
             <ul className='nav-menu'>
@@ -68,7 +68,7 @@ export const Navbar = () => {
             <div className='nav-login-cart'>
                 {localStorage.getItem('auth-token')
                 ?<button onClick={()=> {localStorage.removeItem('auth-token'); window.location.replace('/')}}>登出</button>
-                :<Link to='/login'><button>會員登入</button></Link>}
+                :<Link to='/login'><button>登入</button></Link>}
                 <Link to='/cart'><img src={cart_icon} alt="" /></Link>
                 <div className="nav-cart-count">{getTotalCartItems()}</div>
             </div>
@@ -77,29 +77,3 @@ export const Navbar = () => {
 };
 
 
-/*
-export const Navbar = () => {
-
-    const [menu, setMenu] = useState("shop");
-
-    return (
-        <div className='navbar'>
-            <div className='nav-logo'>
-                <img src={logo} alt="" />
-                <p>SHOPPER</p>  
-            </div>
-            <ul className='nav-menu'>
-                <li onClick={()=>{setMenu("shop")}}><Link style={{ textDecoration: 'none' }} to='/'>Shop</Link>{menu==="shop"?<hr/>:<></>}</li>
-                <li onClick={()=>{setMenu("mens")}}><Link style={{ textDecoration: 'none' }} to='/mens'>年齡</Link>{menu==="mens"?<hr/>:<></>}</li>
-                <li onClick={()=>{setMenu("womens")}}><Link style={{ textDecoration: 'none' }} to='/womens'>語言</Link>{menu==="womens"?<hr/>:<></>}</li>
-                <li onClick={()=>{setMenu("kids")}}><Link style={{ textDecoration: 'none' }} to='/kids'>主題</Link>{menu==="kids"?<hr/>:<></>}</li>
-            </ul>
-            <div className='nav-login-cart'>
-                <Link to='/login'><button>Login</button></Link>
-                <Link to='/cart'><img src={cart_icon} alt="" /></Link>
-                <div className="nav-cart-count">0</div>
-            </div>
-        </div>
-    )
-}
-*/

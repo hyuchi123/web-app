@@ -2,7 +2,6 @@
     display: flex;
     justify-content: space-around;
     padding: 16px;
-    box-shadow: 0 1px 3px -2px black;
 }
 .nav-logo{
     display: flex;
@@ -18,6 +17,8 @@
 }
 .nav-logo img {
     margin-right: 25px;
+    border-radius: 90%; 
+    box-shadow: 0 0 10px rgba(0.1, 0, 0, 0.1);
 }
 .nav-menu{
     display: flex;

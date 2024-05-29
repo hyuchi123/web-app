@@ -1,6 +1,6 @@
 import React from 'react'
 import './Footer.css'
-import footer_logo from '../Assets/logo_big.png'
+import footer_logo from '../Assets/logo.png'
 import instagram_icon from '../Assets/instagram_icon.png'
 import pinterest_icon from '../Assets/pinterest_icon.png'
 import whatsapp_icon from '../Assets/whatsapp_icon.png'
@@ -9,8 +9,8 @@ export const Footer = () => {
   return (
     <div className='footer'>
         <div className="footer-logo">
-            <img src={footer_logo} alt="" />
-            <p>Happy Book</p>
+            <img src={footer_logo} alt="" width="100" height="100"/>
+            <p>快樂書朋友</p>
         </div>
         <ul className="footer-links">
             <li>Company</li>
