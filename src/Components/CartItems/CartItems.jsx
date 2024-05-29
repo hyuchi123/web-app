@@ -23,7 +23,7 @@ export const CartItems = () => {
                     console.log('Order created successfully:', result);
                     clearCart(); // 清空前端購物車
                     alert('付款成功！訂單已成立');
-                    navigate('/');
+                    navigate('/orders');
                 } else {
                     const errorData = await response.json();
                     throw new Error(errorData.message || '付款失敗');

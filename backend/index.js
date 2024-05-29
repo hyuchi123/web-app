@@ -368,14 +368,17 @@ app.get("/cart", fetchUser, async (req, res) => {
 const Order = mongoose.model("orders", {
   userId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "User",
+    ref: "Users",
     required: true,
   },
   items: [
     {
       productId: {
         type: Number,
-        ref: "Product",
+        required: true,
+      },
+      productname: {
+        type: String,
         required: true,
       },
       quantity: {
@@ -397,7 +400,7 @@ const Order = mongoose.model("orders", {
   },
 });
 
-// Create order endpoint
+// Creating endpoint for make an order
 app.post("/orders", fetchUser, async (req, res) => {
   console.log("Creating order");
   try {
@@ -409,6 +412,7 @@ app.post("/orders", fetchUser, async (req, res) => {
         if(product) {
           items.push({
             productId: product.id,
+            productname: product.name,
             quantity: userData.cartData[itemId],
             price: product.new_price,
           });
@@ -442,6 +446,13 @@ app.delete("/cart", fetchUser, async (req, res) => {
     { cartData: userData.cartData }
   );
   res.send("Cart cleared");
+});
+
+// Creating endpoint for getting user order
+app.get("/orders", fetchUser, async (req, res) => {
+  console.log("Get order");
+  let orders = await Order.find({ userId: req.user.id }).sort({ date: -1 });
+  res.json(orders);
 });
 
 app.listen(port, (error) => {
