@@ -10,7 +10,7 @@ export const LoginSignup = () => {
         email:"",
     })
 
-    const changeHandler = (e) => {
+    const changeHandler = (e) => { 
         setFormData({...formData, [e.target.name]:e.target.value});
     }
     const handleCheckboxChange = () => {
@@ -96,5 +96,5 @@ export const LoginSignup = () => {
         </div>
     )
 }
-
+  
 

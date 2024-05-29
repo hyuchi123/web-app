@@ -18,8 +18,8 @@ export const Navbar = () => {
         <div className='navbar'>
             <div className='nav-logo'>
                 <Link to='/' style={{ display: 'flex', alignItems: 'center', textDecoration: 'none'}}>
-                <img src={logo} alt="Logo" />
-                <p>Happy book</p>
+                <img src={logo} alt="Logo" width="50" height="50"/>
+                <p>Happy Book</p>
                 </Link>
             </div>
             <ul className='nav-menu'>
