@@ -364,9 +364,75 @@ app.get("/cart", fetchUser, async (req, res) => {
   res.json(userData.cartData);
 });
 
+
+const Order = mongoose.model("orders", {
+  userId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
+    required: true,
+  },
+  items: [
+    {
+      productId: {
+        type: Number,
+        ref: "Product",
+        required: true,
+      },
+      quantity: {
+        type: Number,
+        required: true,
+      },
+      price: {
+        type: Number,
+        required: true,
+      },
+    }],
+  totalAmount: {
+    type: Number,
+    required: true,
+  },
+  date: {
+    type: Date,
+    default: Date.now,
+  },
+});
+
+// Create order endpoint
+app.post("/orders", fetchUser, async (req, res) => {
+  console.log("Creating order");
+  try {
+    let userData = await Users.findOne({ _id: req.user.id });
+    let items = [];
+    for (const itemId in userData.cartData) {
+      if(userData.cartData[itemId] > 0) {
+        let product = await Product.findOne({ id: itemId });
+        if(product) {
+          items.push({
+            productId: product.id,
+            quantity: userData.cartData[itemId],
+            price: product.new_price,
+          });
+        }
+      }
+    }
+    let totalAmount = items.reduce((total, item) => total + item.price * item.quantity, 0);
+    const order = new Order({
+      userId: req.user.id,
+      items: items,
+      totalAmount: totalAmount
+    });
+    await order.save();
+    res.status(201).json({ message: "Order created successfully", order });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Internal server error" });
+  }
+});
+
+
 // Creating endpoint for clearing user cart data
 app.delete("/cart", fetchUser, async (req, res) => {
-  console.log("Clear cart");
+  console.log("Cart cleared successfully");
   let userData = await Users.findOne({ _id: req.user.id });
   for (let i = 0; i < 300; i++) {
     userData.cartData[i] = 0;

@@ -7,41 +7,31 @@ import remove_icon from '../Assets/cart_cross_icon.png'
 export const CartItems = () => {
     const { getTotalCartAmount, data, cartItems, removeFromCart, clearCart } = useContext(ShopContext);
     const navigate = useNavigate();
-
     const handlePayment = async () => {
-        // 從 localStorage 獲取 auth-token
-        const authToken = localStorage.getItem('auth-token');
-
-        // 檢查 token 是否存在
-        if (!authToken) {
-            alert('身份驗證失敗，請重新登入');
-            return;
-        }
-
-        try {
-            console.log('Sending DELETE request to clear cart');
-            const response = await fetch('http://localhost:4000/cart', {
-                method: 'DELETE',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'auth-token': authToken // 使用從 localStorage 中獲取的 token
+        if (localStorage.getItem('auth-token')) {
+            try {
+                const response = await fetch('http://localhost:4000/orders', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'auth-token': localStorage.getItem('auth-token')
+                    },
+                    body: JSON.stringify({ cartItems })
+                });
+                if (response.ok) {
+                    const result = await response.json();
+                    console.log('Order created successfully:', result);
+                    clearCart(); // 清空前端購物車
+                    alert('付款成功！訂單已成立');
+                    navigate('/');
+                } else {
+                    const errorData = await response.json();
+                    throw new Error(errorData.message || '付款失敗');
                 }
-            });
-
-            console.log('Received response:', response);
-            if (response.ok) {
-                console.log('Cart cleared successfully');
-                await clearCart(); // 清空前端購物車
-                alert('付款成功！訂單已成立');
-                navigate('/');
-            } else {
-                const errorData = await response.json();
-                console.error('Error response data:', errorData);
-                throw new Error(errorData.errors || '付款失敗');
+            } catch (error) {
+                console.error('Error creating order:', error.message);
+                alert('付款過程中出現錯誤，請稍後再試');
             }
-        } catch (error) {
-            console.error('Error clearing cart:', error.message);
-            alert('付款過程中出現錯誤，請稍後再試');
         }
     };
 
