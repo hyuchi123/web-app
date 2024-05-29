@@ -37,7 +37,7 @@ export const ShopCategory = (props) => {
       <hr/>
       <div className="shopcategory-indexSort">
         <p>
-          <span>Showing {(startIndex + 1)}-{startIndex + currentItems.length} out of {totalItems} products</span>
+          <span>顯示第 {(startIndex + 1)}-{startIndex + currentItems.length}個商品，共有 {totalItems} 個商品</span>
         </p>
       </div>
       <div className="shopcategory-products">
