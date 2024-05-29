@@ -15,6 +15,14 @@ The website architecture includes:
 - Historical order records
 - Admin system for managing products
 
+![image](https://github.com/hyuchi123/web-app/blob/main/home.png)
+![image](https://github.com/hyuchi123/web-app/blob/main/bookList.png)
+![image](https://github.com/hyuchi123/web-app/blob/main/signup.png)
+![image](https://github.com/hyuchi123/web-app/blob/main/cartToCheckout.png)
+![image](https://github.com/hyuchi123/web-app/blob/main/orderList.png)
+![image](https://github.com/hyuchi123/web-app/blob/main/allProduct.png)
+![image](https://github.com/hyuchi123/web-app/blob/main/upload.png)
+
 <br>
 
 The backend database consists of user data, product data, and order data to manage user information, products, shopping carts, and orders.
@@ -80,8 +88,15 @@ $ npm run dev
 
 <br>
 
-# Database Schema
+# Database Schema & API
 
+DataBase
+![image](https://github.com/hyuchi123/web-app/blob/main/Schema.png)
+
+<br>
+
+API
+![image](https://github.com/hyuchi123/web-app/blob/main/API.png)
 
 <br>
 
