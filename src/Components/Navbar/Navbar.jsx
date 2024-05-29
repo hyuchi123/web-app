@@ -63,6 +63,15 @@ export const Navbar = () => {
                             </div>
                         )}
                     </span>
+                </li>
+                <li>
+                    {localStorage.getItem('auth-token')? (
+                    <>    
+                        <span className="menu">
+                            <Link style={{ textDecoration: 'none', color:'#626262' }} to='/orders'>訂單列表</Link>
+                        </span>
+                    </>
+                    ) : <></>}
                 </li>   
             </ul>
             <div className='nav-login-cart'>
