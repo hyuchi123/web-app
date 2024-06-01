@@ -1,0 +1,56 @@
+.order-page {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+  }
+  
+  .order-page h1 {
+    text-align: center;
+    color: #333;
+  }
+  
+  .order-page ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .order-card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 20px 0;
+    padding: 20px;
+  }
+  
+  .order-card h2 {
+    margin: 0 0 10px;
+    color: #555;
+  }
+  
+  .order-card p {
+    margin: 5px 0;
+    color: #666;
+  }
+  
+  .order-items {
+    margin-top: 10px;
+  }
+  
+  .order-item {
+    border-top: 1px solid #eee;
+    padding: 10px 0;
+  }
+  
+  .order-item:first-child {
+    border-top: none;
+  }
+  
+  .order-item p {
+    margin: 5px 0;
+  }
+  
+  .no-orders {
+    text-align: center;
+    color: #777;
+  }
+  

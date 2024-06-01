@@ -6,6 +6,7 @@ import { ShopCategory } from "./Pages/ShopCategory";
 import { Product } from "./Pages/Product";
 import { Cart } from "./Pages/Cart";
 import { LoginSignup } from "./Pages/LoginSignup";
+import { Order } from "./Pages/Order";
 import { Footer } from "./Components/Footer/Footer";
 import banner_1 from "./Components/Assets/banner_12.jpg";  
 import banner_2 from "./Components/Assets/banner_13.jpg";  
@@ -32,6 +33,7 @@ function App() {
         <Route path='/theme/健康與體育' element={<ShopCategory banner={banner_3} category="健康與體育"/>}/>
         <Route path='/theme/家政教育' element={<ShopCategory banner={banner_3} category="家政教育"/>}/>
         <Route path='/theme/生活' element={<ShopCategory banner={banner_3} category="生活"/>}/>
+        <Route path="/orders" element={<Order/>}/>
         <Route path="/product/:productId" element={<Product />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/login" element={<LoginSignup />} />
