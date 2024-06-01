@@ -1,5 +1,5 @@
 .cartitems {
-    margin: 100px 170px;
+    margin: 0 100px;
 }
 
 .cartitems hr {
@@ -44,15 +44,16 @@
 .cartitems-down {
     display: flex;
     justify-content: flex-end;
-    gap: 200px;
-    margin: 100px 0px;
+    gap: 130px;
+    margin: 100px -10px;
+    width: 110%; /* 調整此值以增加整體寬度 */
 }
 
 .cartitems-total {
     flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 40px;
+    gap: 50px;
 }
 
 .cartitems-total-item {
@@ -66,7 +67,7 @@
     height: 58px;
     outline: none;
     border: none;
-    background: #ff5a5a;
+    background: #CD853F;
     color: #fff;
     font-size: 20px;
     font-weight: 600;
@@ -79,8 +80,9 @@
 .cartitems-credit {
     flex: 1;
     font-size: 16px;
-    font-weight: 500;
-    margin-left: 40px;
+    font-weight: 400;
+    margin-left: 0;
+    margin-right: 55px;
 }
 
 .cartitems-credit p {
@@ -88,7 +90,7 @@
 }
 
 .cartitems-box {
-    width: 600px;
+    width: 500px;
     margin-top: 15px;
     padding-left: 20px;
     height: 58px;
