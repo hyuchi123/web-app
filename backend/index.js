@@ -56,6 +56,11 @@ const Users = mongoose.model("users", {
   cartData: {
     type: Object,
   },
+  role: {
+    type: String,
+    enum: ['user', 'admin'],
+    default: 'user',
+  },
   date: {
     type: Date,
     default: Date.now,
@@ -79,12 +84,14 @@ app.post("/signup", async (req, res) => {
     email: req.body.email,
     password: req.body.password,
     cartData: cart,
+    role: 'user',
   });
   await user.save();
 
   const data = {
     user: {
       id: user.id,
+      role: user.role,
     },
   };
   const token = jwt.sign(data, "serect_ecom");
@@ -100,6 +107,7 @@ app.post("/login", async (req, res) => {
       const data = {
         user: {
           id: user.id,
+          role: user.role,
         },
       };
       const token = jwt.sign(data, "serect_ecom");
@@ -455,6 +463,36 @@ app.get("/orders", fetchUser, async (req, res) => {
   res.json(orders);
 });
 
+// Creating endpoint for admin to get orders count
+app.get('/admin/orderscount', async (req, res) => {
+  try {
+    const count = await Order.countDocuments();
+    res.json({ count });
+  } catch (error) {
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+// Creating endpoint for admin to get users count
+app.get('/admin/userscount', async (req, res) => {
+  try {
+    const count = await Users.countDocuments();
+    res.json({ count });
+  } catch (error) {
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+// Creating endpoint for admin products count
+app.get('/admin/productscount', async (req, res) => {
+  try {
+    const count = await Product.countDocuments();
+    res.json({ count });
+  } catch (error) {
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
 app.listen(port, (error) => {
   if (!error) {
     console.log("Server is running on port:", port);
@@ -462,3 +500,4 @@ app.listen(port, (error) => {
     console.log("Error:", error);
   }
 });
+

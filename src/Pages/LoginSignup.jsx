@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import './CSS/Loginsignup.css'
-
+import {jwtDecode} from 'jwt-decode';
 export const LoginSignup = () => {
     const [state, setState] = useState("會員登入");
     const [agreeChecked, setAgreeChecked] = useState(false);
@@ -35,7 +35,14 @@ export const LoginSignup = () => {
         
         if(responseData.success){
             localStorage.setItem('auth-token',responseData.token);
-            window.location.replace("/");
+            const decodedToken = jwtDecode(responseData.token);
+            const userRole = decodedToken.user.role;
+            if(userRole === 'admin'){
+                window.location.replace("http://localhost:5173?token="+responseData.token);
+                localStorage.removeItem('auth-token');
+            } else{
+                window.location.replace("/");
+            }
         }
         else{
             alert(responseData.errors)
@@ -62,8 +69,8 @@ export const LoginSignup = () => {
         }).then((response)=> response.json()).then((data)=> responseData=data);
         
         if(responseData.success){
-            localStorage.setItem('auth-token',responseData.token);
-            window.location.replace("/");
+            alert('註冊成功，請登入您的帳號');
+            window.location.replace("/login");
         }
         else{
             alert(responseData.errors)
