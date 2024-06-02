@@ -58,8 +58,8 @@ const Users = mongoose.model("users", {
   },
   role: {
     type: String,
-    enum: ['user', 'admin'],
-    default: 'user',
+    enum: ["user", "admin"],
+    default: "user",
   },
   date: {
     type: Date,
@@ -84,7 +84,8 @@ app.post("/signup", async (req, res) => {
     email: req.body.email,
     password: req.body.password,
     cartData: cart,
-    role: 'user',
+    // role: 'user',
+    role: req.body.role,
   });
   await user.save();
 
@@ -372,7 +373,6 @@ app.get("/cart", fetchUser, async (req, res) => {
   res.json(userData.cartData);
 });
 
-
 const Order = mongoose.model("orders", {
   userId: {
     type: mongoose.Schema.Types.ObjectId,
@@ -397,7 +397,8 @@ const Order = mongoose.model("orders", {
         type: Number,
         required: true,
       },
-    }],
+    },
+  ],
   totalAmount: {
     type: Number,
     required: true,
@@ -415,9 +416,9 @@ app.post("/orders", fetchUser, async (req, res) => {
     let userData = await Users.findOne({ _id: req.user.id });
     let items = [];
     for (const itemId in userData.cartData) {
-      if(userData.cartData[itemId] > 0) {
+      if (userData.cartData[itemId] > 0) {
         let product = await Product.findOne({ id: itemId });
-        if(product) {
+        if (product) {
           items.push({
             productId: product.id,
             productname: product.name,
@@ -427,11 +428,14 @@ app.post("/orders", fetchUser, async (req, res) => {
         }
       }
     }
-    let totalAmount = items.reduce((total, item) => total + item.price * item.quantity, 0);
+    let totalAmount = items.reduce(
+      (total, item) => total + item.price * item.quantity,
+      0
+    );
     const order = new Order({
       userId: req.user.id,
       items: items,
-      totalAmount: totalAmount
+      totalAmount: totalAmount,
     });
     await order.save();
     res.status(201).json({ message: "Order created successfully", order });
@@ -440,7 +444,6 @@ app.post("/orders", fetchUser, async (req, res) => {
     res.status(500).json({ message: "Internal server error" });
   }
 });
-
 
 // Creating endpoint for clearing user cart data
 app.delete("/cart", fetchUser, async (req, res) => {
@@ -464,32 +467,32 @@ app.get("/orders", fetchUser, async (req, res) => {
 });
 
 // Creating endpoint for admin to get orders count
-app.get('/admin/orderscount', async (req, res) => {
+app.get("/admin/orderscount", async (req, res) => {
   try {
     const count = await Order.countDocuments();
     res.json({ count });
   } catch (error) {
-    res.status(500).json({ error: 'Internal server error' });
+    res.status(500).json({ error: "Internal server error" });
   }
 });
 
 // Creating endpoint for admin to get users count
-app.get('/admin/userscount', async (req, res) => {
+app.get("/admin/userscount", async (req, res) => {
   try {
     const count = await Users.countDocuments();
     res.json({ count });
   } catch (error) {
-    res.status(500).json({ error: 'Internal server error' });
+    res.status(500).json({ error: "Internal server error" });
   }
 });
 
 // Creating endpoint for admin products count
-app.get('/admin/productscount', async (req, res) => {
+app.get("/admin/productscount", async (req, res) => {
   try {
     const count = await Product.countDocuments();
     res.json({ count });
   } catch (error) {
-    res.status(500).json({ error: 'Internal server error' });
+    res.status(500).json({ error: "Internal server error" });
   }
 });
 
@@ -500,4 +503,3 @@ app.listen(port, (error) => {
     console.log("Error:", error);
   }
 });
-
