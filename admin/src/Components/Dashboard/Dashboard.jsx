@@ -36,7 +36,6 @@ const Dashboard = () => {
 
   return (
     <div className='dashboard'>
-      <h1>Admin Dashboard</h1>
       <div className='dashboard-stats'>
         <div className='stat'>
           <h2>訂單數量</h2>
