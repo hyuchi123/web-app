@@ -8,10 +8,13 @@
     background-color: white;
 }
 .nav-logo {
-    width: 200px;
+    width: 90px;
+    margin-right: 25px;
+    border-radius: 90%; 
+    box-shadow: 0 0 10px rgba(0.1, 0, 0, 0.1);
 }
 .nav-profile{
-    width: 75px;
+    width: 50px;
 }
 @media(max-width:800px){
     .nav-bar{
