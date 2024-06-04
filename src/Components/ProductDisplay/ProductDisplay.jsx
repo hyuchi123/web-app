@@ -48,7 +48,6 @@ export const ProductDisplay = (props) => {
           <button onClick={()=>{handleAddToCart()}}>加入購物車</button>
           {message && <p>{message}</p>}
         </div>
-          
       </div>
     )
 }
