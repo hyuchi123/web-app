@@ -82,10 +82,12 @@ $ node index.js
 $ npm start
 ```
 
-3. Run frontend in the `admin` directory
+3. Run admin system in the `admin` directory
 ```sh
 $ npm run dev
 ```
+
+Note: You can directly use admin system at localhost:5173. You can also create an admin account using Thunder Client and set the role to "**admin**" (the default is "user"). 
 
 <br>
 
