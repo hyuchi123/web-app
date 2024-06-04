@@ -15,7 +15,14 @@ The website architecture includes:
 - Historical order records
 - Admin system for managing products
 
-
+![image](https://github.com/hyuchi123/web-app/blob/main/home.png)
+![image](https://github.com/hyuchi123/web-app/blob/main/bookList.png)
+![image](https://github.com/hyuchi123/web-app/blob/main/signup.png)
+![image](https://github.com/hyuchi123/web-app/blob/main/cartToCheckout.png)
+![image](https://github.com/hyuchi123/web-app/blob/main/orderList.png)
+![image](https://github.com/hyuchi123/web-app/blob/main/admin.png)
+![image](https://github.com/hyuchi123/web-app/blob/main/allProduct.png)
+![image](https://github.com/hyuchi123/web-app/blob/main/upload.png)
 
 <br>
 
@@ -90,7 +97,7 @@ DataBase
 <br>
 
 API
-
+![image](https://github.com/hyuchi123/web-app/blob/main/API.png)
 
 <br>
 
