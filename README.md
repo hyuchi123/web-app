@@ -60,7 +60,7 @@ $ npm install
 ```
 
 4. Add book data in your MongoDB
-
+You can find example in `src/Assets/books.csv`.
 - **Columns required**: name, image, author, description, age, topic, language, new_price, old_price
 - **Example data**: 
 
